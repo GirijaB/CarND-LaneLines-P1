@@ -1,3 +1,4 @@
+
 **Finding Lane Lines on the Road**
 
 The goals / steps of this project are the following:
@@ -25,6 +26,7 @@ Convert the image to grayscale.
 
 
 Apply Canny Edge detection.
+
 low_threshold = 20
 high_threshold = 150
 edges = canny(blur_gray, low_threshold, high_threshold)
