@@ -1,4 +1,5 @@
 
+
 **Finding Lane Lines on the Road**
 
 The goals / steps of this project are the following:
@@ -22,6 +23,8 @@ The steps performed to find lane lines on road images were as follows:-
 
 
 Convert the image to grayscale.
+
+
 ![Alt text](/examples/grayscale.jpg?raw=true)
 
 
@@ -30,31 +33,45 @@ Apply Canny Edge detection.
 low_threshold = 20
 high_threshold = 150
 edges = canny(blur_gray, low_threshold, high_threshold)
+
 ![Alt text](/examples/canny_threshold.png?raw=true)
 
 
 Mark region of interest on Canny Edge image by drawing polygons and filling the edges in the region.
+
 imshape = image.shape
+
 vertices = np.array([[
             (0, imshape[0]),
             (imshape[1]/2 - 50,3*imshape[0]/5),
             (imshape[1]/2 + 50,3*imshape[0]/5),
             (imshape[1],imshape[0]),
         ]], dtype=np.int32)
+        
 ![Alt text](/examples/masked.jpg.png?raw=true)
 
 
+
 Then apply Hough Transform on the Canny Edges to identify lines from the edges and then processing them to identify the predominant linesand filling that on the edges. 
+
 rho = 1
+
 theta = np.pi/180
+
 threshold = 1
+
 min_line_length = 10
+
 max_line_gap = 5
+
 line_image = hough_lines(masked_image, rho, theta, threshold, min_line_length, max_line_gap)
+
 ![Alt text](/examples/hough.jpg.png?raw=true)
 
 
+
 Finally we map the detected lines on the imag.
+
 ![Alt text](/examples/laneLines_thirdPass.jpg?raw=true)
 
 
